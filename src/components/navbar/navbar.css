@@ -1,0 +1,44 @@
+.container{
+    width: 90%;
+    height: 70px;
+    display: flex;
+    margin: 0 auto;
+}
+.logo{
+    width: 50%;
+    align-items: center;
+}
+.logo img{
+    max-width: 70%;
+    max-height: 70%;
+    margin-top: 5px;
+}
+.navegation{
+    width: 50%;
+}
+.navegation ul{
+    list-style: none;
+}
+.navegation ul li{
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+.navegation ul li a{
+    color: #f7f1e3;
+    text-decoration: none;
+    font-weight: 700;
+}
+.navegation ul li a:hover{
+    color: #34495e;
+}
+
+#shoppingCart{
+    box-sizing: border-box;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background-color: #ecf0f1;
+}
+#shoppingCart a{
+    color: #34495e;
+}
