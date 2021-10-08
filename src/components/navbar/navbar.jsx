@@ -14,6 +14,7 @@ const Navbar = () => {
         <div className="container">
             <div className="logo">
                 <img src={logo} alt="Logo" />
+                <h3>todoTec</h3>
             </div>
             <div className="navegation">
                 <ul>
