@@ -1,0 +1,8 @@
+.detailItemCount{
+    display: flex;
+}
+.itemCuantity{
+    width: 50px;
+    border: 1px solid black;
+    text-align: center;
+}
