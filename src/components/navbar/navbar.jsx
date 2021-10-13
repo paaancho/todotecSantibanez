@@ -1,15 +1,8 @@
 import './navbar.css';
 import logo from './logo.svg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import CartWidget from '../cartwidget/cartwidget';
 
 const Navbar = () => {
-
-    const stylesIconShopping = {
-        marginRight : '5px',
-        color : '#34495e'
-    };
-
     return (
         <div className="container">
             <div className="logo">
@@ -22,10 +15,8 @@ const Navbar = () => {
                     <li><a href="/#">Sobre Nosotros</a></li>
                     <li><a href="/#">Tienda</a></li>
                     <li><a href="/#">Contacto</a></li>
-                    <li id="shoppingCart"><a href="/#">
-                            <FontAwesomeIcon icon={faShoppingCart} style={stylesIconShopping}/>
-                            Carrito
-                        </a>
+                    <li id="shoppingCart">
+                        <CartWidget itemCounter="3"/>
                     </li>
                 </ul>
             </div>
