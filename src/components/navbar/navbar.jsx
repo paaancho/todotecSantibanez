@@ -1,6 +1,6 @@
-import './navbar.css';
+import './navBar.css';
 import logo from './logo.svg';
-import CartWidget from '../cartwidget/cartwidget';
+import CartWidget from '../cartWidget/cartWidget';
 
 const Navbar = () => {
     return (

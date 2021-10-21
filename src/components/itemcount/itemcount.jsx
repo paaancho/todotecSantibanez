@@ -1,4 +1,4 @@
-import './itemcount.css';
+import './itemCount.css';
 
 const ItemCount = (props) =>{
     return (

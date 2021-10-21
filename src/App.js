@@ -1,10 +1,11 @@
-import './components/navbar/navbar.css';
-import Navbar from './components/navbar/navbar.jsx';
-import ItemListContainer from './components/itemlistcontainer/itemlistcontainer.jsx';
+import './components/navBar/navBar.css';
+import Navbar from './components/navBar/navBar';
+import ItemListContainer from './components/itemListContainer/itemListContainer';
 import { useState } from 'react';
 
 function App() {
   const [counterItem, setCounterItem] = useState(1);
+  // eslint-disable-next-line
   const [itemStock, setItemStock] = useState(10);
 
   // Funcion que añade 1 item al carrito
@@ -40,13 +41,19 @@ function App() {
         <Navbar />
       </header>
       <main>
-        <ItemListContainer 
+        {/* <ItemListContainer 
           textTitle="Bienvenido a todoTec" 
           stock={itemStock} 
           counter={counterItem} 
           onAdd={itemAdd} 
           onRemove={itemRemove}
-        />
+        /> */}
+      <ItemListContainer titleCategory="Componentes PC" 
+          stock={itemStock} 
+          counter={counterItem} 
+          onAdd={itemAdd} 
+          onRemove={itemRemove}
+          /> 
       </main>
     </div>
       

@@ -1,6 +1,18 @@
+
+.ItemListContainer{
+    width: 90%;
+    margin: auto;
+}
+
 .ItemListContainer img{
     width: 100px;
 }
 .textTitle{
     text-align: center;
+}
+
+.Items{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
