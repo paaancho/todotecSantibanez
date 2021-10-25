@@ -1,4 +1,5 @@
 import ItemCount from '../itemCount/itemCount';
+import './item.css';
 
 const Item = ({product}) =>{
     return (
@@ -6,8 +7,10 @@ const Item = ({product}) =>{
             <img src={product.photo} alt="" />
             <h3>{product.name}</h3>
             <span>${product.price}</span><br />
-            <ItemCount stock={product.stock} counter="0" />
-            <button>Añadir al Carrito</button>
+            <ItemCount stock={product.stock} />
+            <div className="cartAdd">
+                <button>Añadir al Carrito</button>
+            </div>
         </div>
     );
 };

@@ -1,0 +1,16 @@
+.cartAdd button{
+    border: none;
+    width: 100%;
+    margin-top: 10px;
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #706fd3;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+.item button:hover{
+    background-color: #6160a8;
+}

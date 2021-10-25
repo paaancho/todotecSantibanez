@@ -1,8 +1,26 @@
 .detailItemCount{
     display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
 .itemCuantity{
-    width: 50px;
-    border: 1px solid black;
+    width: 100px;
+    border: 0.5px solid #c7c7c7;
     text-align: center;
+}
+
+.detailItemCount button{
+    background-color: #706fd3;
+    border: none;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    cursor: pointer;
+    color:white;
+    font-weight: bold;
+}
+.itemRemove{
+    border-radius: 5px 0px 0px 5px;
+}
+.itemAdd{
+    border-radius: 0px 5px 5px 0px;
 }
