@@ -10,7 +10,7 @@ function App() {
         <Navbar />
       </header>
       <main>
-        <ItemListContainer titleCategory="Componentes PC" /> 
+        <ItemListContainer titleCategory="Prueba" /> 
       </main>
     </div>
       
