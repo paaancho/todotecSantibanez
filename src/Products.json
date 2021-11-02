@@ -2,29 +2,9 @@
     {
         "id": 1,
         "name": "Monitor",
-        "stock" : 0,
+        "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus ante in nibh porta, eu faucibus nulla laoreet. In erat orci, lacinia at felis ut, consectetur suscipit felis. Phasellus consectetur, nibh in fermentum convallis, metus lacus aliquet nisi, vel rhoncus arcu lacus eu massa.",
+        "stock" : 10,
         "price": 50000,
         "photo": "https://cdn.pixabay.com/photo/2012/04/13/15/03/monitor-32743_960_720.png"
-    },
-    {
-        "id": 2,
-        "name": "Mouse",
-        "stock" : 10,
-        "price": 35000,
-        "photo": "https://cdn.pixabay.com/photo/2013/07/12/17/41/computer-mouse-152249_960_720.png"
-    },
-    {
-        "id": 3,
-        "name": "Teclado",
-        "stock" : 3,
-        "price": 50000,
-        "photo": "https://m.media-amazon.com/images/I/71UX0DvjgnS._AC_SL1500_.jpg"
-    },
-    {
-        "id": 4,
-        "name": "Procesador I7",
-        "stock" : 50,
-        "price": 199990,
-        "photo": "https://55575.smushcdn.com/2311458/wp-content/uploads/2021/05/123-intel-core-i7-11700k-35-ghz-300x300.jpg?lossy=1&strip=1&webp=1"
     }
 ]

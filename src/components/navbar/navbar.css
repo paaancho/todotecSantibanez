@@ -48,3 +48,56 @@
 #shoppingCart a{
     color: #34495e;
 }
+
+@media (max-width:768px){
+    .navegation{
+        width: 70%;
+    }
+    .logo{
+        width: 30%;
+    }
+}
+
+#hambuguerIcon{
+    display: none;
+}
+@media (max-width:426px){
+    #hambuguerIcon{
+        display: unset;
+        margin-left: 60%;
+        cursor: pointer;
+    }
+    .container{
+        height: 10px;
+        flex-direction: column;
+    }
+    .logo{
+        height: 60px;
+        width: 100%;
+    }
+    .navegation{
+        animation: fadeInLeft;
+        animation-duration: .5s;
+        width: 100%;
+        position: relative;
+        background-color: white;
+        box-shadow: 0px 5px 15px -3px #000000;
+    }
+    .navegation ul{
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        padding: 10px 5px;
+    }
+    .navegation ul li{
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    .navegation ul li a{
+        color: black;
+    }
+    .logo img{
+        max-width: 50%;
+        max-height: 50%;
+    }
+}

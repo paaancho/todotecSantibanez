@@ -1,6 +1,9 @@
 import './navBar.css';
 import logo from './logo.svg';
 import CartWidget from '../cartWidget/cartWidget';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import 'animate.css';
 
 const Navbar = () => {
     return (
@@ -8,6 +11,7 @@ const Navbar = () => {
             <div className="logo">
                 <img src={logo} alt="Logo" />
                 <h3>todoTec</h3>
+                <FontAwesomeIcon icon={faBars} id="hambuguerIcon"/>
             </div>
             <div className="navegation">
                 <ul>
