@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
-import productosJSON from '../../Products.json';
-import ItemDetail from '../itemDetail/itemDetail';
+import { useState, useEffect } from "react";
+import ProductosJSON from '../../Products.json';
+import ItemDetail from "../itemDetail/itemDetail";
 
 const ItemDetailContainer = () => {
-    const [itemDetail, setItemDetail] = useState(null);
+    //Se inicializa la variable 'producto' con un estado array vacío.
+    const [productos, setProductos] = useState([]);
 
+    //getData obtiene los productos del json Productos con una promesa y timeOut de 2seg.
     const getData = (data) => new Promise((resolve, reject) => {
         setTimeout(() => {
             if (data) {
@@ -16,25 +18,24 @@ const ItemDetailContainer = () => {
     });
 
     useEffect(() => {
-        getData(productosJSON)
-        .then((response) => {
-            setItemDetail(response);
+        getData(ProductosJSON)
+        .then((res) => {
+            setProductos(res);
         })
-        .catch((error) =>{
-            console.log(error);
-        })
-    },[]);
-
-    console.log(itemDetail);
-
-    return (
+        .catch((err) => {
+            console.log(err);
+        });
+    }, []);
+    return(
         <div className="itemDetailContainer">
             {
-                itemDetail ?
-                itemDetail.map((itemDetail) =>(
-                    <ItemDetail productDetail={itemDetail} key={itemDetail.id}/>
-                )) 
-                : 'Cargando Productos'
+                productos ?
+                productos.map((producto) =>{
+                    return(
+                        <ItemDetail productDetail={producto}/>
+                    )
+                })
+                : 'Cargando Detalle...'
             }
         </div>
     )

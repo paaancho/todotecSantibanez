@@ -1,7 +1,6 @@
+import ItemCount from "../itemCount/itemCount";
 import './itemDetail.css';
-import ItemCount from '../itemCount/itemCount';
-
-const ItemDetail = ({ productDetail }) =>{
+const ItemDetail = ({productDetail}) =>{
     return(
         <div className="ItemDetail">
             <div className="imgProduct">

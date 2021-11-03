@@ -1,6 +1,6 @@
 .detailItemCount{
     display: flex;
-    width: 40%;
+    width: 100%;
     justify-content: space-between;
 }
 .itemCuantity{

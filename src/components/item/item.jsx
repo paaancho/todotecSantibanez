@@ -1,10 +1,16 @@
 import './item.css';
-import ItemDetailContainer from '../itemDetailContainer/itemDetailContainer';
+import ItemCount from '../itemCount/itemCount';
 
-const Item = () =>{
+const Item = ({ product }) =>{
     return (
         <div className="item">
-            <ItemDetailContainer />
+            <img src={product.photo} alt="" />
+            <h3>{product.name}</h3>
+            <span>${product.price}</span><br />
+            <ItemCount stock={product.stock} />
+            <div className="cartAdd">
+                <button>Añadir al Carrito</button>
+            </div>
         </div>
     );
 };
