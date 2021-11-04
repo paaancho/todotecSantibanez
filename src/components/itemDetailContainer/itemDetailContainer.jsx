@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import ProductosJSON from '../../Products.json';
 import ItemDetail from "../itemDetail/itemDetail";
+import Loader from "../loader/loader";
+import './itemDetailContainer.css';
 
 const ItemDetailContainer = () => {
+    //Id producto
+    const {itemId} = useParams();
     //Se inicializa la variable 'producto' con un estado array vacío.
-    const [productos, setProductos] = useState([]);
+    const [producto, setProducto] = useState(null);
 
     //getData obtiene los productos del json Productos con una promesa y timeOut de 2seg.
     const getData = (data) => new Promise((resolve, reject) => {
@@ -20,22 +25,23 @@ const ItemDetailContainer = () => {
     useEffect(() => {
         getData(ProductosJSON)
         .then((res) => {
-            setProductos(res);
+            itemId ? setProducto(res.filter(prod => prod.id === parseInt(itemId))) : setProducto(res);
         })
         .catch((err) => {
             console.log(err);
         });
-    }, []);
+    }, [itemId]);
+
+    console.log(producto);
+
     return(
         <div className="itemDetailContainer">
             {
-                productos ?
-                productos.map((producto) =>{
-                    return(
-                        <ItemDetail productDetail={producto}/>
-                    )
-                })
-                : 'Cargando Detalle...'
+                producto?
+                producto.map((product) => (
+                    <ItemDetail key={product.id} productDetail={product}/>
+                ))
+                : <Loader />
             }
         </div>
     )

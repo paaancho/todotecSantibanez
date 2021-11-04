@@ -4,20 +4,35 @@ import CartWidget from '../cartWidget/cartWidget';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import 'animate.css';
+import { NavLink, Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
         <div className="container">
-            <div className="logo">
-                <img src={logo} alt="Logo" />
-                <h3>todoTec</h3>
-                <FontAwesomeIcon icon={faBars} id="hambuguerIcon"/>
-            </div>
+                <div className="logo">
+                    <Link to="/">
+                        <img src={logo} alt="Logo" />
+                        <h3>todoTec</h3>
+                    </Link>
+                    <FontAwesomeIcon icon={faBars} id="hambuguerIcon"/>
+                </div>
             <div className="navegation">
                 <ul>
-                    <li><a href="/#">Inicio</a></li>
-                    <li><a href="/#">Sobre Nosotros</a></li>
-                    <li><a href="/#">Tienda</a></li>
+                    <li>
+                        <NavLink to="/">
+                            Inicio
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/category/1">
+                            Componentes
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/category/2">
+                            Periféricos
+                        </NavLink>
+                    </li>
                     <li><a href="/#">Contacto</a></li>
                     <li id="shoppingCart">
                         <CartWidget itemCounter="3"/>

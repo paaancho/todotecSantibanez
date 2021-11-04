@@ -2,9 +2,46 @@
     {
         "id": 1,
         "name": "Monitor",
-        "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus ante in nibh porta, eu faucibus nulla laoreet. In erat orci, lacinia at felis ut, consectetur suscipit felis. Phasellus consectetur, nibh in fermentum convallis, metus lacus aliquet nisi, vel rhoncus arcu lacus eu massa.",
-        "stock" : 10,
+        "stock" : 2,
         "price": 50000,
+        "categoryId" : 2,
+        "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis.",
         "photo": "https://cdn.pixabay.com/photo/2012/04/13/15/03/monitor-32743_960_720.png"
+    },
+    {
+        "id": 2,
+        "name": "Mouse",
+        "stock" : 10,
+        "price": 35000,
+        "categoryId" : 2,
+        "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis.",
+        "photo": "https://cdn.pixabay.com/photo/2013/07/12/17/41/computer-mouse-152249_960_720.png"
+    },
+    {
+        "id": 3,
+        "name": "Gabinete",
+        "stock" : 100,
+        "price": 85990,
+        "categoryId" : 1,
+        "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis.",
+        "photo": "https://www.spdigital.cl/img/products/new_web/1575398912873-75832785_3910893890.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Teclado",
+        "stock" : 25,
+        "price": 25990,
+        "categoryId" : 1,
+        "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis.",
+        "photo": "https://d1so2n7ngiklqk.cloudfront.net/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/0/103715_1.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Disco SSD",
+        "categoryId" : 1,
+        "stock" : 0,
+        "price": 50990,
+        "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis.",
+        "photo": "https://www.profesionalreview.com/wp-content/uploads/2019/11/como-elegir-un-ssd-02.jpg"
     }
 ]

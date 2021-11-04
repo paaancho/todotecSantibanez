@@ -1,0 +1,11 @@
+.itemDetailContainer{
+    margin-top: 50px;
+}
+
+.itemDetailContainer .cartAdd button{
+    width: 180px;
+}
+
+.itemDetailContainer .detailItemCount{
+    width: 200px;
+}

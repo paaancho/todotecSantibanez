@@ -22,7 +22,7 @@
 
 .cartAdd button{
     border: none;
-    width: 40%;
+    width: 100%;
     margin-top: 10px;
     box-sizing: border-box;
     padding: 5px;
@@ -42,4 +42,7 @@
     .imgProduct{
         width: 100%;
     }
+}
+#titleDetail{
+    text-align: center;
 }
