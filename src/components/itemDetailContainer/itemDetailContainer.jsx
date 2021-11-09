@@ -8,6 +8,7 @@ import './itemDetailContainer.css';
 const ItemDetailContainer = () => {
     //Id producto
     const {itemId} = useParams();
+    console.log(itemId);
     //Se inicializa la variable 'producto' con un estado array vacío.
     const [producto, setProducto] = useState(null);
 

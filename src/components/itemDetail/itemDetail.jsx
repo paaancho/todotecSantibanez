@@ -1,7 +1,19 @@
+import { useState } from "react";
 import ItemCount from "../itemCount/itemCount";
 import './itemDetail.css';
+import CheckoutContainer from "../checkoutContainer/checkoutContainer";
 
 const ItemDetail = ({productDetail}) =>{
+
+    const [visibilityOnCart, setVisibilityOnCart] = useState(true);
+    const [counterItem, setCounterItem] = useState(0);
+    const onCartAdd = (data) =>{
+        if(data > 0){
+            setVisibilityOnCart(false);
+            setCounterItem(data);
+        }
+    }
+
     return(
         <>
             <h1 id="titleDetail">Detalle del Producto</h1>
@@ -13,10 +25,9 @@ const ItemDetail = ({productDetail}) =>{
                     <h2>{productDetail.name}</h2>
                     <p className="descriptionProduct">{productDetail.description}</p>
                     <h3>Precio: ${productDetail.price}</h3>
-                    <ItemCount stock={productDetail.stock} />
-                    <div className="cartAdd">
-                        <button>Añadir al Carrito</button>
-                    </div>
+                    {
+                        visibilityOnCart ? <ItemCount stock={productDetail.stock} cartAdd={onCartAdd}/> : <CheckoutContainer counter={counterItem}/>
+                    }
                 </div>
             </div>
         </>

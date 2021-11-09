@@ -3,6 +3,7 @@ import { useState } from 'react';
 import swal from 'sweetalert';
 
 
+
 const ItemCount = (props) =>{
 
     const [counterItem, setCounterItem] = useState(1);
@@ -10,23 +11,23 @@ const ItemCount = (props) =>{
 
     // Funcion que añade 1 item al carrito
     const itemAdd = () => {
-        if(itemStock === 0){
-        // alert('No hay stock disponible!');
-        swal({
-            title: 'No hay stock disponible',
-            icon: 'error'
-        });
-        setCounterItem(0);
-        }else{
-        if(counterItem < itemStock){
-            setCounterItem(counterItem + 1);
-        }else{
-            // alert('No puedes superar el stock disponible')
+            if(itemStock === 0){
+            // alert('No hay stock disponible!');
             swal({
-                text: 'No puedes superar el stock disponible',
-                icon: 'warning'
+                title: 'No hay stock disponible',
+                icon: 'error'
             });
-        }
+            setCounterItem(0);
+        }else{
+            if(counterItem < itemStock){
+                setCounterItem(counterItem + 1);
+            }else{
+                // alert('No puedes superar el stock disponible')
+                swal({
+                    text: 'No puedes superar el stock disponible',
+                    icon: 'warning'
+                });
+            }
         }
     }
 
@@ -52,6 +53,11 @@ const ItemCount = (props) =>{
         }
     } 
 
+    // props.onAddCart(counterItem);
+    const onAddCart = () =>{
+        props.cartAdd(counterItem);
+    }
+
     return (
         <div className="containerItemCount">
             <p>Stock: {props.stock}</p>
@@ -61,6 +67,9 @@ const ItemCount = (props) =>{
                     <span>{props.stock > 0 ? counterItem : 0}</span>
                 </div>
                 <button onClick={itemAdd} className="itemAdd">+</button>
+            </div>
+            <div className="cartAdd">
+                <button onClick={onAddCart}>Añadir al Carrito</button>
             </div>
         </div>
     )

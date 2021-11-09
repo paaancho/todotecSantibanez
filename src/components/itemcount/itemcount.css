@@ -24,3 +24,18 @@
 .itemAdd{
     border-radius: 0px 5px 5px 0px;
 }
+.btnContinue{
+    background-color: #3498db;
+    color: white;
+}
+.btnContinue:not([disabled]):hover {
+    background-color: #2980b9;
+}
+
+.btnConfirmCart{
+    background-color: #2ecc71;
+}
+
+.btnConfirmCart:not([disabled]):hover {
+    background-color: #27ae60;
+}

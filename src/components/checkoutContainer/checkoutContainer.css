@@ -1,0 +1,16 @@
+.btn{
+    border: none;
+    box-sizing: border-box;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btnContinueShop{
+    background-color: #3498db;
+}
+
+.btnGoToCart{
+    background-color: #2ecc71;
+}
