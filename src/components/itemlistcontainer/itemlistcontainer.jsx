@@ -19,7 +19,7 @@ const ItemListContainer = (props) => {
             }else {
                 reject("No se encontro nada");
             }
-        }, 2000);
+        }, 500);
     });
 
     useEffect(() => {

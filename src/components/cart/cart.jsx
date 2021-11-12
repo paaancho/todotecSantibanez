@@ -1,8 +1,11 @@
+import { useContext } from "react";
+import CartContext from "../contexts/cartContext/cartContext";
+
 
 const Cart = () => {
     return(
         <>
-            <h2 Style="text-align:center">Carrito de Compras</h2>
+            <h2 Style="text-align:center">Finalizar compra</h2>
         </>
     )
 }
