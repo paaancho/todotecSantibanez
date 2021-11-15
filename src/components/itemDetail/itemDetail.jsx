@@ -2,15 +2,30 @@ import { useState } from "react";
 import ItemCount from "../itemCount/itemCount";
 import './itemDetail.css';
 import CheckoutContainer from "../checkoutContainer/checkoutContainer";
-const ItemDetail = ({productDetail}) =>{
+import { useCartContext } from "../contexts/cartContext/cartContext";
+import swal from 'sweetalert';
 
+
+
+
+const ItemDetail = ({productDetail}) =>{
+    const cartConsumer = useCartContext();
     const [visibilityOnCart, setVisibilityOnCart] = useState(true);
     const [counterItem, setCounterItem] = useState(0);
 
     const onCartAdd = (data) =>{
         if(data > 0){
-            setVisibilityOnCart(false);
-            setCounterItem(data);
+            if(!cartConsumer.isInCart(productDetail)){
+                setVisibilityOnCart(false);
+                setCounterItem(data);
+                productDetail['cantidad'] = data;
+                cartConsumer.addItem(productDetail);
+            }else{
+                swal({
+                    icon : 'info',
+                    title: 'Este producto ya esta añadido al carrito'
+                })
+            }
         }
     }
 

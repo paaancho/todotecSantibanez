@@ -4,15 +4,12 @@ import ItemListContainer from './components/itemListContainer/itemListContainer'
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer';
 import Cart from './components/cart/cart';
-import CartContext from './components/contexts/cartContext/cartContext';
-import { useState } from 'react/cjs/react.development';
+import { CartContextProvider } from './components/contexts/cartContext/cartContext';
 
 function App() {
 
-  const [cartItems, setCartItems] = useState([]);
-
   return (
-      <CartContext.Provider value={cartItems}>
+      <CartContextProvider>
         <BrowserRouter>
           <header className="header">
             <Navbar />
@@ -34,7 +31,7 @@ function App() {
               </>
             </Switch>
           </BrowserRouter>
-      </CartContext.Provider>
+      </CartContextProvider>
   );
 }
 
