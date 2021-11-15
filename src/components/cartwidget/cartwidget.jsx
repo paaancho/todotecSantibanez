@@ -11,10 +11,11 @@ const stylesIconCart = {
 const CartWidget = (props) =>{
     const cartConsumer = useCartContext();
     const [counterItems, setCounterItems] = useState(0);
-    const productItems = cartConsumer.getItems().length
+    const productItems = cartConsumer.getItems();
+
     useEffect(() => {
-        setCounterItems(productItems);
-    },[productItems])
+        setCounterItems(productItems.length);
+    },[productItems.length])
 
     return (
         <Link to="/cart">

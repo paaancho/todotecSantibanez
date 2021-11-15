@@ -32,8 +32,16 @@ export const CartContextProvider = ({children}) => {
     }
 
     //función que actualiza el item si este ya existe
-    const updateItem = (item) => {
-        
+    const updateItem = (itemId, cantidad) => {
+        //obtengo el indice del elemento a actualizar
+        const indiceElement = cartItems.findIndex((item) => item.id === itemId);
+        //hago una copia del array de los itmes para no modificar el verdadero por seguridad.
+        const copyArray = [...cartItems];
+        //sumo la cantidadOriginalmente con la nuevaCantidad
+        const nuevaCantidad = cartItems[indiceElement].cantidad + cantidad;
+        copyArray[indiceElement].cantidad = nuevaCantidad;
+        setCartItems(copyArray);
+        return true;
     }
 
     const removeItem = (itemId) => {
@@ -62,6 +70,7 @@ export const CartContextProvider = ({children}) => {
         });
         return total;
     }
+
 
 
 

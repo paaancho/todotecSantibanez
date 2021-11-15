@@ -21,10 +21,14 @@ const ItemDetail = ({productDetail}) =>{
                 productDetail['cantidad'] = data;
                 cartConsumer.addItem(productDetail);
             }else{
-                swal({
-                    icon : 'info',
-                    title: 'Este producto ya esta añadido al carrito'
-                })
+                const updateItem = cartConsumer.updateItem(productDetail.id, data)
+                if(updateItem){
+                    swal({
+                        icon : 'info',
+                        title: 'Producto actualizado',
+                        text:'se ha actualizado el producto en el carrito'
+                    })
+                }
             }
         }
     }
