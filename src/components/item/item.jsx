@@ -2,16 +2,27 @@ import './item.css';
 import ItemCount from '../itemCount/itemCount';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import swal from 'sweetalert';
+import { useCartContext } from '../contexts/cartContext/cartContext';
 
 const Item = ({ product }) =>{
-
+    const cartConsumer = useCartContext();
     const [visibilityOnCart, setVisibilityOnCart] = useState(true);
     const [counterItem, setCounterItem] = useState(0);
 
     const onCartAdd = (data) =>{
         if(data > 0){
-            setVisibilityOnCart(false);
-            setCounterItem(data);
+            if(!cartConsumer.isInCart(product)){
+                setVisibilityOnCart(false);
+                setCounterItem(data);
+                product['cantidad'] = data;
+                cartConsumer.addItem(product);
+            }else{
+                swal({
+                    icon : 'info',
+                    title: 'Este producto ya esta añadido al carrito'
+                })
+            }
         }
     }
     
@@ -26,7 +37,7 @@ const Item = ({ product }) =>{
             {
                         visibilityOnCart ? 
                         <ItemCount stock={product.stock} cartAdd={onCartAdd}/> 
-                        : `${counterItem} Producto(s) añadido al Carrito`
+                        : <Link to="/cart"><button id="btnGoCart">Ir al carrito</button></Link>
                     }
             </div>
         </div>

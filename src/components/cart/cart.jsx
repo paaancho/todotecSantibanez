@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCartContext } from "../contexts/cartContext/cartContext";
-import Loader from "../loader/loader";
+import { Link } from "react-router-dom";
 import './cart.css';
 
 const Cart = () => {
@@ -23,36 +23,53 @@ const Cart = () => {
         <>
             <h2 Style="text-align:center">Finalizar compra</h2>
                 <div className="cartContainerDetail">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Producto</th>
-                                <th>Cantidad</th>
-                                <th>Precio Unitario</th>
-                                <th>Total</th>
-                                <th>Acción</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {
-                            cartItems ? 
-                                cartItems.map((item) => (
-                                    <tr key={item.name}>
-                                        <td>{item.name}</td>
-                                        <td>{item.cantidad}</td>
-                                        <td>{item.price}</td>
-                                        <td>{item.price * item.cantidad}</td>
-                                        <td><button onClick={() => removeItem(item.id)}>Eliminar</button></td>
-                                    </tr>
-                                ))
-                            : <Loader />
-                        }
-                        </tbody>
-                    </table>
-                    {cartItems.length > 0 ? <button tpye="button" onClick={clearCart}>Vacíar Carrito</button> : <h3 Style="text-align:center;">Carrito Vacío</h3>}
+                    {cartItems.length > 0 ? 
+                    <div className="cartDetail">
+                            <button id="btnClearCart" tpye="button" onClick={clearCart}>Vacíar Carrito</button> 
+                            <table>
+                            <thead>
+                                <tr>
+                                    <th Style="width:35%">Producto</th>
+                                    <th col="1">Cantidad</th>
+                                    <th col="1">Precio Unitario</th>
+                                    <th col="1">Total</th>
+                                    <th Style="width:15%">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                    {
+                                        cartItems.map((item) => (
+                                            <tr key={item.id}>
+                                                <td>
+                                                    <div className="detail">
+                                                        <img src={item.photo} alt="Imagen product" width="100" height="100" />
+                                                        <p>{item.name}<br/><span>SKU: 000{item.id}</span></p>
+                                                    </div>
+                                                </td>
+                                                <td>{item.cantidad}</td>
+                                                <td>{item.price}</td>
+                                                <td>{item.price * item.cantidad}</td>
+                                                <td><button id="btnRemoveItem" onClick={() => removeItem(item.id)}>Eliminar</button></td>
+                                            </tr>
+                                        ))
+                                    }
+                            </tbody>
+                            </table>
+                            <div className="totalCart">
+                                <p>Total: ${cartConsumer.getTotalCarts()}</p>
+                            </div>
+                    </div>: 
+                    <div className="clearCart">
+                        <p>El carrito esta vacío</p>
+                        <Link to="/">
+                            <button type="button">Ir a comprar</button>
+                        </Link>
+                    </div>
+                    }
                 </div>
         </>
     )
 }
 
 export default Cart;
+

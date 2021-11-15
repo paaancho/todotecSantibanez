@@ -9,7 +9,81 @@ table {
     text-align: left;
     padding: 8px;
   }
-  
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
+
+#btnRemoveItem{
+  background-color: #706fd3;
+  border: none;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  cursor: pointer;
+  color:white;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+#btnClearCart{
+  margin: 15px;
+  background-color: #706fd3;
+  border: none;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  cursor: pointer;
+  color:white;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.clearCart{
+  background-color: rgba(182, 182, 182, 0.212);
+  width: 400px;
+  height: 150px;
+  margin: auto;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+}
+
+.clearCart p{
+  text-align: center;
+}
+
+.clearCart button{
+  margin: auto;
+}
+
+
+.clearCart button{
+    background-color: #706fd3;
+    border: none;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    cursor: pointer;
+    color:white;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-left: 35%;
+}
+
+.detail{
+  display: flex;
+  align-items: center;
+}
+
+.detail p{
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+.detail p span{
+  font-weight: normal;
+  font-size: 10px;
+  color: #bbbbbb;
+}
+
+.totalCart{
+  margin-left: 80%;
+}
+
+.totalCart p{
+  font-weight: bold;
+  font-size: 24px;
+}

@@ -14,3 +14,15 @@
 .item button:hover{
     background-color: #6160a8;
 }
+
+#btnGoCart{
+    background-color: #706fd3;
+    border: none;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    cursor: pointer;
+    color:white;
+    font-weight: bold;
+    margin-top: 50%;
+    border-radius: 10px;
+}
