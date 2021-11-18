@@ -36,7 +36,7 @@ git init *Inicializa un repo de git vacío*
 git clone https://github.com/paaancho/todotecSantibanez.git *Clona el repositorio en tu directorio*
 ```
 
-## Ejecutando las pruebass ⚙️
+## Ejecutando las pruebas ⚙️
 
 _npm start_
 
