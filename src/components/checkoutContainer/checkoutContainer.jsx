@@ -1,5 +1,6 @@
 import './checkoutContainer.css';
 import { Link } from 'react-router-dom';
+
 const CheckoutContainer = ({counter}) =>{
     return (
         <div className="checkOutContainer">

@@ -41,7 +41,7 @@ export const CartContextProvider = ({children}) => {
         const nuevaCantidad = cartItems[indiceElement].cantidad + cantidad;
         copyArray[indiceElement].cantidad = nuevaCantidad;
         setCartItems(copyArray);
-        return true;
+        return {nuevaCantidad: nuevaCantidad, estado: true};
     }
 
     const removeItem = (itemId) => {
@@ -61,7 +61,6 @@ export const CartContextProvider = ({children}) => {
         return cartItems.some((product) => product.id === item.id);
     }
 
-
     const getTotalCarts = () => {
         let total = 0;
         cartItems.forEach(element => {
@@ -71,11 +70,22 @@ export const CartContextProvider = ({children}) => {
         return total;
     }
 
+    const getCantidad = (itemId) => {
+        const indiceElement = cartItems.findIndex((item) => item.id === itemId);
+        const cantidad = cartItems[indiceElement].cantidad;
+        return cantidad;
+    }
+
+    const getStock = (itemId) => {
+        const indiceElement = cartItems.findIndex((item) => item.id === itemId);
+        const stock = cartItems[indiceElement].stock;
+        return stock;
+    }
 
 
 
     return (
-        <CartContext.Provider value={{addItem, getItems, clearCart, removeItem, updateItem, isInCart, getTotalCarts}}>
+        <CartContext.Provider value={{addItem, getItems, clearCart, removeItem, updateItem, isInCart, getTotalCarts, getCantidad, getStock}}>
             {children}
         </CartContext.Provider>
     )

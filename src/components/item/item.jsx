@@ -3,7 +3,7 @@ import ItemCount from '../itemCount/itemCount';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import swal from 'sweetalert';
-import { useCartContext } from '../contexts/cartContext/cartContext';
+import { useCartContext } from '../../contexts/cartContext/cartContext';
 
 const Item = ({ product }) =>{
     const cartConsumer = useCartContext();
@@ -18,7 +18,7 @@ const Item = ({ product }) =>{
                 product['cantidad'] = data;
                 cartConsumer.addItem(product);
             }else{
-                const updateItem = cartConsumer.updateItem(product.id, data)
+                const updateItem = cartConsumer.updateItem(product.id, data);
                 if(updateItem){
                     swal({
                         icon : 'info',
@@ -28,6 +28,11 @@ const Item = ({ product }) =>{
                     setVisibilityOnCart(false);
                 }
             }
+        }else{
+            swal({
+                title: 'No hay stock disponible',
+                icon: 'error'
+            });
         }
     }
     

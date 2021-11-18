@@ -39,3 +39,19 @@
 .btnConfirmCart:not([disabled]):hover {
     background-color: #27ae60;
 }
+
+.noStock{
+    font-weight: normal;
+    font-size: 18px;
+    color: #808080;
+    text-align: center;
+}
+
+.btn{
+    background-color: #706fd3;
+    border: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    color:white;
+    font-weight: bold;
+}

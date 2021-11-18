@@ -1,37 +1,40 @@
 import './itemListContainer.css';
 import ItemList from '../itemList/itemList';
 import { useEffect, useState } from 'react';
-import ProductosJSON from '../../Products.json';
 import { useParams } from 'react-router-dom';
 import Loader from '../loader/loader';
-
+import { collection, getDocs, where, query } from '@firebase/firestore';
+import { getFirestore } from '../../firebase';
 
 const ItemListContainer = (props) => {
     //obtener VariableURL
     const {categoryId} = useParams();
     //Se inicializa la variable 'producto' con un estado array vacío.
     const [productos, setProductos] = useState([]);
-    //getData obtiene los productos del json Productos con una promesa y timeOut de 2seg.
-    const getData = (data) => new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if (data) {
-                resolve(data);
-            }else {
-                reject("No se encontro nada");
-            }
-        }, 500);
-    });
 
     useEffect(() => {
-        getData(ProductosJSON)
-        .then((res) => {
-            //setProductos(res);
-            categoryId ? setProductos(res.filter(prod => prod.categoryId === parseInt(categoryId))) : setProductos(res);
+        //Instancia de la bd firestore
+        const db = getFirestore();
+        //Query para filtrar por categoria
+        const q = query(collection(db, "Items"), where("categoryId", "==", parseInt(categoryId)));
+        categoryId ? 
+        //Obtener los elementos a traves de un filter por categoryId
+        getDocs(q)
+        .then((snapshot) => {
+            setProductos(snapshot.docs.map((doc) =>{
+                return {...doc.data(), id : doc.id}
+            }));
         })
-        .catch((err) => {
-            console.log(err);
-        });
-    }, [categoryId]);
+        :
+        //Obtener todos los documentos de una colección sin filter
+        getDocs(collection(db, 'Items'))
+        .then((snapshot) => {
+            setProductos(snapshot.docs.map((doc) => {
+                const newArrayProducts = {...doc.data(), id : doc.id};
+                return newArrayProducts;
+            }))
+        })
+    }, [categoryId])
 
     return (
         <div className="ItemListContainer">

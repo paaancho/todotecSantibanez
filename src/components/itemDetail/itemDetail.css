@@ -46,3 +46,7 @@
 #titleDetail{
     text-align: center;
 }
+
+.description i{
+    font-weight: bold;
+}

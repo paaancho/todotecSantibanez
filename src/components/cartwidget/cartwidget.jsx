@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { useCartContext } from '../contexts/cartContext/cartContext';
+import { useCartContext } from '../../contexts/cartContext/cartContext';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 const stylesIconCart = {
@@ -14,8 +14,8 @@ const CartWidget = (props) =>{
     const productItems = cartConsumer.getItems();
 
     useEffect(() => {
-        setCounterItems(productItems.length);
-    },[productItems.length])
+        setCounterItems(productItems.reduce((acumulador, product) => acumulador + product.cantidad, 0));
+    },[productItems])
 
     return (
         <Link to="/cart">

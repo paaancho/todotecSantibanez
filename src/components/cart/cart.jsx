@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useCartContext } from "../contexts/cartContext/cartContext";
+import { useCartContext } from "../../contexts/cartContext/cartContext";
 import { Link } from "react-router-dom";
+import swal from 'sweetalert';
 import './cart.css';
 
 const Cart = () => {
@@ -9,7 +10,7 @@ const Cart = () => {
 
     useEffect(() => {
         setCartItems(cartConsumer.getItems());
-    }, [cartConsumer])
+    }, [cartConsumer] )
 
     const clearCart = () =>{
         cartConsumer.clearCart();
@@ -19,9 +20,26 @@ const Cart = () => {
         cartConsumer.removeItem(itemId);
     }
 
+    const  descountItem = (itemId) => {
+        if(cartConsumer.getCantidad(itemId) > 1){
+            cartConsumer.updateItem(itemId, -1);
+        }
+    }
+
+    const addItem = (itemId) => {
+        if(cartConsumer.getCantidad(itemId) < cartConsumer.getStock(itemId)){
+            cartConsumer.updateItem(itemId,1);
+        }else{
+            swal({
+                icon: 'info',
+                title: 'Superas el limite del stock disponible'
+            })
+        }
+    }
+
     return(
         <>
-            <h2 Style="text-align:center">Finalizar compra</h2>
+            <h2 className="cartTitle">Finalizar compra</h2>
                 <div className="cartContainerDetail">
                     {cartItems.length > 0 ? 
                     <div className="cartDetail">
@@ -41,12 +59,17 @@ const Cart = () => {
                                         cartItems.map((item) => (
                                             <tr key={item.id}>
                                                 <td>
-                                                    <div className="detail">
-                                                        <img src={item.photo} alt="Imagen product" width="100" height="100" />
-                                                        <p>{item.name}<br/><span>SKU: 000{item.id}</span></p>
-                                                    </div>
+                                                    <Link to={`/item/${item.id}`}>
+                                                        <div className="detail">
+                                                            <img src={item.photo} alt="Imagen product" width="100" height="100" />
+                                                            <p>{item.name}<br/><span>SKU: 000{item.id}</span></p>
+                                                        </div>
+                                                    </Link>
                                                 </td>
-                                                <td>{item.cantidad}</td>
+                                                <td className="editCount">
+                                                    <button onClick={() => descountItem(item.id)}>-</button>
+                                                    <span><label>{item.cantidad}</label></span>
+                                                    <button onClick={() => addItem(item.id)}>+</button></td>
                                                 <td>{item.price}</td>
                                                 <td>{item.price * item.cantidad}</td>
                                                 <td><button id="btnRemoveItem" onClick={() => removeItem(item.id)}>Eliminar</button></td>

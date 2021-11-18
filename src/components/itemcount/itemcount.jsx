@@ -55,24 +55,33 @@ const ItemCount = (props) =>{
 
     // props.onAddCart(counterItem);
     const onAddCart = () =>{
-        props.cartAdd(counterItem);
+        props.stock > 0 ? props.cartAdd(counterItem) : props.cartAdd(0);
     }
 
     return (
         <div className="containerItemCount">
             <p>Stock: {props.stock}</p>
-            <div className="detailItemCount">
-                <button onClick={itemRemove} className="itemRemove">-</button>                
-                <div className="itemCuantity">
-                    <span>{props.stock > 0 ? counterItem : 0}</span>
-                </div>
-                <button onClick={itemAdd} className="itemAdd">+</button>
-            </div>
-            <div className="cartAdd">
-                <button onClick={onAddCart}>Añadir al Carrito</button>
-            </div>
+            {
+                props.stock > 0 
+                ?
+                <>
+                    <div className="detailItemCount">
+                        <button onClick={itemRemove} className="itemRemove">-</button>                
+                        <div className="itemCuantity">
+                            <span>{counterItem}</span>
+                        </div>
+                        <button onClick={itemAdd} className="itemAdd">+</button>
+                    </div>
+                    <div className="cartAdd">
+                        <button onClick={onAddCart}>Añadir al Carrito</button>
+                    </div>
+                </>
+                :
+                <p className="noStock">Sin stock 😟</p>
+            }
         </div>
     )
 }
 
-export default ItemCount
+export default ItemCount;
+

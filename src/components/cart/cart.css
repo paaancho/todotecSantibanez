@@ -10,6 +10,11 @@ table {
     padding: 8px;
   }
 
+.cartContainerDetail{
+  width: 60%;
+  margin: auto;
+}
+  
 #btnRemoveItem{
   background-color: #706fd3;
   border: none;
@@ -86,4 +91,27 @@ table {
 .totalCart p{
   font-weight: bold;
   font-size: 24px;
+}
+
+.editCount button{
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  border-radius: 100%;
+  background-color: #706fd3;
+  box-sizing: border-box;
+  padding: 5px 10px;
+}
+.editCount button:hover{
+  background-color: #5453a0;
+}
+
+.editCount span{
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.cartTitle{
+  text-align: center;
 }
