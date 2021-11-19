@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const CheckoutContainer = ({counter}) =>{
     return (
         <div className="checkOutContainer">
-            <p Style="font-weight:bold">Se han añadido {counter} producto(s) al carrito</p>
+            <p><i>Se han añadido {counter} producto(s) al carrito</i></p>
             <Link to="/">
                 <button className="btn btnContinueShop">Continuar Comprando</button>
             </Link>

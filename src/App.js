@@ -6,33 +6,30 @@ import ItemDetailContainer from './components/itemDetailContainer/itemDetailCont
 import Cart from './components/cart/cart';
 import { CartContextProvider } from './contexts/cartContext/cartContext';
 
-
 function App() {
 
   return (
-      <CartContextProvider>
-        <BrowserRouter>
-          <header className="header">
-            <Navbar />
-          </header>
-          <Switch>
-              <>
-                <Route exact path="/">
-                  <ItemListContainer titleCategory="Productos"/>
-                </Route>
-                <Route exact path="/category/:categoryId">
-                  <ItemListContainer titleCategory="Productos"/>
-                </Route>
-                <Route exact path="/item/:itemId">
-                  <ItemDetailContainer />
-                </Route>
-                <Route exact path="/cart">
-                    <Cart />
+        <CartContextProvider>
+          <BrowserRouter>
+            <header className="header">
+              <Navbar />
+            </header>
+            <Switch>
+                  <Route exact path="/">
+                    <ItemListContainer titleCategory="Productos"/>
                   </Route>
-              </>
+                  <Route exact path="/category/:categoryId">
+                    <ItemListContainer titleCategory="Productos"/>
+                  </Route>
+                  <Route exact path="/item/:itemId">
+                    <ItemDetailContainer />
+                  </Route>
+                  <Route exact path="/cart">
+                      <Cart />
+                    </Route>
             </Switch>
           </BrowserRouter>
-      </CartContextProvider>
+        </CartContextProvider>
   );
 }
 

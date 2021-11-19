@@ -11,14 +11,13 @@ const ItemListContainer = (props) => {
     const {categoryId} = useParams();
     //Se inicializa la variable 'producto' con un estado array vacío.
     const [productos, setProductos] = useState([]);
-
     useEffect(() => {
-        //Instancia de la bd firestore
+        // Instancia de la bd firestore
         const db = getFirestore();
-        //Query para filtrar por categoria
+        // Query para filtrar por categoria
         const q = query(collection(db, "Items"), where("categoryId", "==", parseInt(categoryId)));
         categoryId ? 
-        //Obtener los elementos a traves de un filter por categoryId
+        // Obtener los elementos a traves de un filter por categoryId
         getDocs(q)
         .then((snapshot) => {
             setProductos(snapshot.docs.map((doc) =>{
@@ -26,7 +25,7 @@ const ItemListContainer = (props) => {
             }));
         })
         :
-        //Obtener todos los documentos de una colección sin filter
+        // Obtener todos los documentos de una colección sin filter
         getDocs(collection(db, 'Items'))
         .then((snapshot) => {
             setProductos(snapshot.docs.map((doc) => {
@@ -34,13 +33,13 @@ const ItemListContainer = (props) => {
                 return newArrayProducts;
             }))
         })
-    }, [categoryId])
+    }, [categoryId]);
 
     return (
         <div className="ItemListContainer">
             <h3 className="textTitle">{props.titleCategory}</h3>
             <div className="Items">
-            {  productos.length
+            {  productos
                 ? productos.map((producto) => (
                 <ItemList product={producto} key={producto.id} />
                 ))
