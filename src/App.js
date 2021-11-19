@@ -5,6 +5,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer';
 import Cart from './components/cart/cart';
 import { CartContextProvider } from './contexts/cartContext/cartContext';
+import CheckoutContainer from './components/checkoutContainer/checkoutContainer';
 
 function App() {
 
@@ -26,7 +27,10 @@ function App() {
                   </Route>
                   <Route exact path="/cart">
                       <Cart />
-                    </Route>
+                  </Route>
+                  <Route exact path="/cart/crear-orden">
+                    <CheckoutContainer />
+                  </Route>
             </Switch>
           </BrowserRouter>
         </CartContextProvider>

@@ -1,22 +1,10 @@
 import { useState } from "react";
 import ItemCount from "../itemCount/itemCount";
 import './itemDetail.css';
-import CheckoutContainer from "../checkoutContainer/checkoutContainer";
 import { useCartContext } from "../../contexts/cartContext/cartContext";
 import swal from 'sweetalert';
 import { useEffect } from "react/cjs/react.development";
-
-//Traer documento de una coleccion por un id Especifico
-// import { getFirestore } from '../../firebase';
-// import { doc, getDoc } from '@firebase/firestore';
-//Firebase
-// const db = getFirestore();
-// const itemRef = doc(db, 'Items', 'eTKovgoDMTP9mG7ghcMO');
-// getDoc(itemRef).then((snapshot) => {
-//     if(snapshot.exists()){
-//         console.log(snapshot.data());
-//     }
-// })
+import { Link } from "react-router-dom";
 
 
 const ItemDetail = ({productDetail}) =>{
@@ -40,6 +28,8 @@ const ItemDetail = ({productDetail}) =>{
                         title: 'Producto actualizado',
                         text:`La cantidad a sido actualizada a: ${updateItem.nuevaCantidad} producto(s)`
                     })
+                    setCounterItem(data);
+                    setVisibilityOnCart(false);
                 }
             }
         }else{
@@ -74,7 +64,16 @@ const ItemDetail = ({productDetail}) =>{
                     {
                         visibilityOnCart ? 
                         <ItemCount stock={productDetail.stock} cartAdd={onCartAdd}/> 
-                        : <CheckoutContainer counter={counterItem}/>
+                        : 
+                        <div className="checkOutContainer">
+                            <p><i>Se han añadido {counterItem} producto(s) al carrito</i></p>
+                            <Link to="/">
+                                <button className="btn btnContinueShop">Continuar Comprando</button>
+                            </Link>
+                            <Link to="/cart">
+                                <button className="btn btnGoToCart" Style="margin-left:10px">Ir al carrito</button>
+                            </Link>
+                        </div>
                     }
                 </div>
             </div>

@@ -8,6 +8,7 @@ import { useCartContext } from '../../contexts/cartContext/cartContext';
 const Item = ({ product }) =>{
     const cartConsumer = useCartContext();
     const [visibilityOnCart, setVisibilityOnCart] = useState(true);
+    // eslint-disable-next-line no-unused-vars
     const [counterItem, setCounterItem] = useState(0);
 
     const onCartAdd = (data) =>{
@@ -18,13 +19,14 @@ const Item = ({ product }) =>{
                 product['cantidad'] = data;
                 cartConsumer.addItem(product);
             }else{
-                const updateItem = cartConsumer.updateItem(product.id, data);
-                if(updateItem){
+                const updateItem = cartConsumer.updateItem(product.id, data)
+                if(updateItem.estado){
                     swal({
-                        icon : 'info',
+                        icon : 'success',
                         title: 'Producto actualizado',
-                        text:'se ha actualizado el producto en el carrito'
+                        text:`La cantidad a sido actualizada a: ${updateItem.nuevaCantidad} producto(s)`
                     })
+                    setCounterItem(data);
                     setVisibilityOnCart(false);
                 }
             }

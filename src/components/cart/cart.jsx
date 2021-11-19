@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import swal from 'sweetalert';
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { collection, addDoc, Timestamp } from "firebase/firestore";
-import { getFirestore } from "../../firebase";
 import './cart.css';
 
 const Cart = () => {
@@ -41,26 +39,9 @@ const Cart = () => {
         }
     }
 
-    const sendOrder = async () => {
-        const db = getFirestore();
-        const order = {
-            buyer: { name: "Agustin", phone: "1111", email: "a@a.com" },
-            items: cartItems,
-            total: cartConsumer.getTotalCarts(),
-            date : Timestamp.fromDate(new Date())
-        };
-        const docRef = await addDoc(collection(db, 'Orders'), order).then(({id}) => id);
-        swal({
-            icon : 'success',
-            title: 'Orden creada',
-            text: `Tú numero de orden es: ${docRef}`
-        })
-        cartConsumer.clearCart();
-    }
-
     return(
         <>
-            <h2 className="cartTitle">Finalizar compra</h2>
+            <h2 className="cartTitle">Carrito de compras</h2>
                 <div className="cartContainerDetail">
                     {cartItems.length > 0 ? 
                     <div className="cartDetail">
@@ -68,11 +49,11 @@ const Cart = () => {
                             <table>
                             <thead>
                                 <tr>
-                                    <th Style="width:35%">Producto</th>
+                                    <th style={{width:'35%'}}>Producto</th>
                                     <th col="1">Cantidad</th>
                                     <th col="1">Precio Unitario</th>
                                     <th col="1">Total</th>
-                                    <th Style="width:15%">Acción</th>
+                                    <th style={{width:'15%'}}>Acción</th>
                                 </tr>
                             </thead>
                             <tbody> 
@@ -92,8 +73,8 @@ const Cart = () => {
                                                     <button onClick={() => descountItem(item.id)}>-</button>
                                                     <span><label>{item.cantidad}</label></span>
                                                     <button onClick={() => addItem(item.id)}>+</button></td>
-                                                <td>{item.price}</td>
-                                                <td>{item.price * item.cantidad}</td>
+                                                <td>${item.price}</td>
+                                                <td>${item.price * item.cantidad}</td>
                                                 <td><button id="btnRemoveItem" onClick={() => removeItem(item.id)}><FontAwesomeIcon icon={faTrash}/></button></td>
                                             </tr>
                                         ))
@@ -101,8 +82,8 @@ const Cart = () => {
                             </tbody>
                             </table>
                             <div className="totalCart">
-                                <button type="button" onClick={sendOrder}>Finalizar Compra</button>
                                 <p>Total: ${cartConsumer.getTotalCarts()}</p>
+                                <Link to="cart/crear-orden"><button type="button">Ir al checkout</button></Link>
                             </div>
                     </div>: 
                     <div className="clearCart">

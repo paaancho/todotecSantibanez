@@ -87,6 +87,7 @@ table {
 
 .totalCart{
   margin-left: 80%;
+  padding-bottom: 25px;
 }
 
 .totalCart p{
@@ -117,8 +118,8 @@ table {
   text-align: center;
 }
 
-.totalCart button {
-    margin-top: 15px;
+.totalCart a button {
+    margin-top: 5px;
     background-color: #706fd3;
     border: none;
     box-sizing: border-box;

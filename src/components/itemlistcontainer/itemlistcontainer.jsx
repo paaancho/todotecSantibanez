@@ -39,7 +39,7 @@ const ItemListContainer = (props) => {
         <div className="ItemListContainer">
             <h3 className="textTitle">{props.titleCategory}</h3>
             <div className="Items">
-            {  productos
+            {  productos.length > 0
                 ? productos.map((producto) => (
                 <ItemList product={producto} key={producto.id} />
                 ))
