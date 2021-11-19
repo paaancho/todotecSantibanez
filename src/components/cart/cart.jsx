@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import swal from 'sweetalert';
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { getFirestore } from "../../firebase";
 import './cart.css';
 
@@ -46,7 +46,8 @@ const Cart = () => {
         const order = {
             buyer: { name: "Agustin", phone: "1111", email: "a@a.com" },
             items: cartItems,
-            total: cartConsumer.getTotalCarts()
+            total: cartConsumer.getTotalCarts(),
+            date : Timestamp.fromDate(new Date())
         };
         const docRef = await addDoc(collection(db, 'Orders'), order).then(({id}) => id);
         swal({
@@ -54,6 +55,7 @@ const Cart = () => {
             title: 'Orden creada',
             text: `Tú numero de orden es: ${docRef}`
         })
+        cartConsumer.clearCart();
     }
 
     return(
