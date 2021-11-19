@@ -32,18 +32,12 @@ React-router-dom@5.3.0
 _Para instalar el proyecto en tu maquina sigue los siguientes pasos_
 
 ```
-git init *Inicializa un repo de git vacío*
-git clone https://github.com/paaancho/todotecSantibanez.git *Clona el repositorio en tu directorio*
+git init 
+git clone https://github.com/paaancho/todotecSantibanez.git
+npm install
+npm start
 ```
 
-## Ejecutando las pruebas ⚙️
-
-_npm start_
-
-
-## Despliegue 📦
-
-_npm deploy_
 
 ## Construido con 🛠️
 
