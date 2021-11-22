@@ -3,6 +3,7 @@ import CheckoutDetail from '../checkoutDetail/checkoutDetail';
 import { useCartContext } from '../../contexts/cartContext/cartContext';
 import { collection, addDoc, Timestamp, writeBatch, doc, getDoc } from "firebase/firestore";
 import { getFirestore } from "../../firebase";
+import { useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
 
 const CheckoutContainer = () =>{
@@ -10,6 +11,7 @@ const CheckoutContainer = () =>{
 
     const getItems = cartContextConsumer.getItems();
     const totalCart = cartContextConsumer.getTotalCarts();
+    const history = useHistory();
 
     const createOrder = async (formData) => {
         const db = getFirestore();
@@ -20,12 +22,7 @@ const CheckoutContainer = () =>{
             date : Timestamp.fromDate(new Date())
         };
         const docRef = await addDoc(collection(db, 'Orders'), order).then(({id}) => id);
-        swal({
-            icon : 'success',
-            title: 'Orden creada',
-            text: `Tú numero de orden es: ${docRef}`
-        })
-        .then(() => {
+        if(docRef !== ""){
             getItems.forEach(async (element) => {
                 const batch = writeBatch(db);
                 let stockComprado = element.cantidad;
@@ -37,8 +34,15 @@ const CheckoutContainer = () =>{
                     batch.commit();
                 }
             });
+        }
+        swal({
+            icon : 'success',
+            title: 'Orden creada',
+            text: `Tú numero de orden es: ${docRef}`
+        })
+        .then(() => {
             cartContextConsumer.clearCart();
-            window.location.href = "/";
+            history.push("/");
         })
     }
 
