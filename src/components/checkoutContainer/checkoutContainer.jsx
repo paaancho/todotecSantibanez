@@ -38,7 +38,9 @@ const CheckoutContainer = () =>{
         swal({
             icon : 'success',
             title: 'Orden creada',
-            text: `Tú numero de orden es: ${docRef}`
+            text: `Tú numero de orden es: ${docRef}`,
+            closeOnClickOutside : false,
+            closeOnEsc : false
         })
         .then(() => {
             cartContextConsumer.clearCart();
