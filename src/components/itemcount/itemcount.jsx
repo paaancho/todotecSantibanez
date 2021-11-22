@@ -9,10 +9,8 @@ const ItemCount = (props) =>{
     const [counterItem, setCounterItem] = useState(1);
     const itemStock = props.stock;
 
-    // Funcion que añade 1 item al carrito
     const itemAdd = () => {
             if(itemStock === 0){
-            // alert('No hay stock disponible!');
             swal({
                 title: 'No hay stock disponible',
                 icon: 'error'
@@ -22,7 +20,6 @@ const ItemCount = (props) =>{
             if(counterItem < itemStock){
                 setCounterItem(counterItem + 1);
             }else{
-                // alert('No puedes superar el stock disponible')
                 swal({
                     text: 'No puedes superar el stock disponible',
                     icon: 'warning'
@@ -31,10 +28,8 @@ const ItemCount = (props) =>{
         }
     }
 
-    // Funcion que remueve 1 item al carrito
     const itemRemove = () => {
         if(itemStock === 0){
-        // alert('No hay stock disponible!');
         swal({
             title: 'No hay stock disponible',
             icon: 'error'
@@ -44,7 +39,6 @@ const ItemCount = (props) =>{
         if(counterItem > 1){
             setCounterItem(counterItem - 1);
         }else{
-            // alert('No puedes añadir menos de 1 producto');
                 swal({
                     text: 'No puede añadir menos de 1 producto',
                     icon: 'info'
@@ -53,7 +47,6 @@ const ItemCount = (props) =>{
         }
     } 
 
-    // props.onAddCart(counterItem);
     const onAddCart = () =>{
         props.stock > 0 ? props.cartAdd(counterItem) : props.cartAdd(0);
     }
