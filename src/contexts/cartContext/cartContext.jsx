@@ -1,5 +1,4 @@
-import { createContext, useState } from "react";
-import { useContext } from "react/cjs/react.development";
+import { createContext, useState, useContext } from "react";
 import swal from "sweetalert";
 
 //Creo el context
