@@ -3,6 +3,7 @@ import CheckoutDetail from '../checkoutDetail/checkoutDetail';
 import { useCartContext } from '../../contexts/cartContext/cartContext';
 import { collection, addDoc, Timestamp, writeBatch, doc, getDoc } from "firebase/firestore";
 import { getFirestore } from "../../firebase";
+import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
 
@@ -54,7 +55,7 @@ const CheckoutContainer = () =>{
             <h2 style={{textAlign:'center'}}>Finalizar compra</h2>
             <CheckoutDetail items={getItems} totalCart={totalCart} createOrder={createOrder}/>
         </div> 
-        : ''
+        : <Redirect to="/"/>
     )
 }
 

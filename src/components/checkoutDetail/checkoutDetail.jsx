@@ -29,15 +29,15 @@ const CheckoutDetail = ({items, totalCart, createOrder}) => {
                     <form action="#">
                         <div className="input">
                             <label htmlFor="">Nombre: </label><br />
-                            <input value={formFields.name} type="text" className="form-control" name="name" onChange={handleChange} autocomplete="off"/>
+                            <input value={formFields.name} type="text" className="form-control" name="name" onChange={handleChange} autoComplete="off"/>
                         </div>
                         <div className="input">
                             <label htmlFor="">Email: </label><br />
-                            <input value={formFields.email} type="email" className="form-control" name="email" onChange={handleChange} autocomplete="off"/>
+                            <input value={formFields.email} type="email" className="form-control" name="email" onChange={handleChange} autoComplete="off"/>
                         </div>
                         <div className="input">
                             <label htmlFor="">Telefono: </label><br />
-                            <input value={formFields.phone} type="text" className="form-control" name="phone" onChange={handleChange} autocomplete="off"/>
+                            <input value={formFields.phone} type="text" className="form-control" name="phone" onChange={handleChange} autoComplete="off"/>
                         </div>
                         <button 
                             type="button" 
