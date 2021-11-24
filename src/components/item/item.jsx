@@ -19,15 +19,27 @@ const Item = ({ product }) =>{
                 product['cantidad'] = data;
                 cartConsumer.addItem(product);
             }else{
-                const updateItem = cartConsumer.updateItem(product.id, data)
-                if(updateItem.estado){
+                const items = cartConsumer.getItems();
+                const cartFilter = items.filter((item) => item.id === product.id);
+                const nuevaCantidad = cartFilter[0].cantidad + data;
+                if(nuevaCantidad > product.stock){
                     swal({
-                        icon : 'success',
-                        title: 'Producto actualizado',
-                        text:`La cantidad a sido actualizada a: ${updateItem.nuevaCantidad} producto(s)`
+                        icon : 'error',
+                        title: 'Producto supera el stock',
+                        text : `Este producto ya está en el carrito.
+                                Tienes ${cartFilter[0].cantidad} item(s) de este producto`
                     })
-                    setCounterItem(data);
-                    setVisibilityOnCart(false);
+                }else{
+                    const updateItem = cartConsumer.updateItem(product.id, data)
+                    if(updateItem.estado){
+                        swal({
+                            icon : 'success',
+                            title: 'Producto actualizado',
+                            text:`La cantidad a sido actualizada a: ${updateItem.nuevaCantidad} producto(s)`
+                        })
+                        setCounterItem(data);
+                        setVisibilityOnCart(false);
+                    }
                 }
             }
         }else{

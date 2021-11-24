@@ -24,12 +24,12 @@ const Navbar = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/category/1">
+                        <NavLink to="/category/componentes">
                             Componentes
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/category/2">
+                        <NavLink to="/category/perifericos">
                             Periféricos
                         </NavLink>
                     </li>

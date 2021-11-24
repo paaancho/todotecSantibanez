@@ -19,7 +19,7 @@ function App() {
                   <Route exact path="/">
                     <ItemListContainer titleCategory="Productos"/>
                   </Route>
-                  <Route exact path="/category/:categoryId">
+                  <Route exact path="/category/:categoryName">
                     <ItemListContainer titleCategory="Productos"/>
                   </Route>
                   <Route exact path="/item/:itemId">

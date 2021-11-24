@@ -7,13 +7,10 @@ import { getFirestore } from '../../firebase';
 import './itemDetailContainer.css';
 
 const ItemDetailContainer = () => {
-    //Id producto
     const {itemId} = useParams();
-    //Se inicializa la variable 'producto' con un estado array vacío.
     const [producto, setProducto] = useState([]);
 
     useEffect(() => {
-        //Instancia de la bd firestore
         const db = getFirestore();
         const ref = doc(db, "Items", itemId);
         getDoc(ref).then((snapshot) => {

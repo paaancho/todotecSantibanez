@@ -8,17 +8,16 @@ import { getFirestore } from '../../firebase';
 
 const ItemListContainer = (props) => {
     //obtener VariableURL
-    const {categoryId} = useParams();
+    const {categoryName} = useParams();
     //Se inicializa la variable 'producto' con un estado array vacío.
     const [productos, setProductos] = useState([]);
     useEffect(() => {
         // Instancia de la bd firestore
         const db = getFirestore();
         // Query para filtrar por categoria
-        const q = query(collection(db, "Items"), where("categoryId", "==", parseInt(categoryId)));
-        categoryId ? 
+        categoryName !== undefined ? 
         // Obtener los elementos a traves de un filter por categoryId
-        getDocs(q)
+        getDocs(query(collection(db, "Items"), where("categoryName", "==", categoryName)))
         .then((snapshot) => {
             setProductos(snapshot.docs.map((doc) =>{
                 return {...doc.data(), id : doc.id}
@@ -33,7 +32,7 @@ const ItemListContainer = (props) => {
                 return newArrayProducts;
             }))
         })
-    }, [categoryId]);
+    }, [categoryName]);
 
     return (
         <div className="ItemListContainer">
